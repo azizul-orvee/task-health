@@ -1,0 +1,59 @@
+    <form class="wizard reveal" id="wizard" novalidate>
+      <div class="wizard__top">
+        <span class="wizard__count">Step <b id="stepNum">1</b> of 3</span>
+        <span class="wizard__title" id="stepTitle">Care needs</span>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+      <fieldset class="step is-active" data-title="Care needs">
+        <legend class="sr">Care needs</legend>
+        <p class="q">Who needs care? *</p>
+        <div class="choices" data-name="who">
+          <label><input type="radio" name="who" value="Myself" required><span>Myself</span></label>
+          <label><input type="radio" name="who" value="A parent"><span>A parent</span></label>
+          <label><input type="radio" name="who" value="A partner"><span>A partner</span></label>
+          <label><input type="radio" name="who" value="Another family member"><span>Someone else</span></label>
+        </div>
+        <label class="field">Type of care *
+          <select name="type" required><option value="">Select…</option><option>Visiting / domiciliary care</option><option>Live-in care</option><option>Respite care</option><option>Dementia care</option><option>End-of-life care</option><option>Supported living</option><option>Not sure yet</option></select>
+        </label>
+        <label class="field">Postcode where care is needed *
+          <input name="postcode" required placeholder="e.g. IG6 3HA" autocomplete="postal-code" autocapitalize="characters">
+        </label>
+      </fieldset>
+
+      <fieldset class="step" data-title="Timing & funding">
+        <legend class="sr">Timing and funding</legend>
+        <p class="q">How soon is care needed? *</p>
+        <div class="choices choices--stack" data-name="when">
+          <label><input type="radio" name="when" value="Immediately (within a week)" required><span>Immediately <small>within a week</small></span></label>
+          <label><input type="radio" name="when" value="Within a month"><span>Within a month</span></label>
+          <label><input type="radio" name="when" value="In 1–6 months"><span>In 1–6 months</span></label>
+          <label><input type="radio" name="when" value="Just researching"><span>Just researching</span></label>
+        </div>
+        <label class="field">How will care be funded? *
+          <select name="funding" required><option value="">Select…</option><option>Fully private (self-funded)</option><option>Direct Payment from Local Authority/NHS</option><option>Arranged/funded by Local Authority</option><option>Arranged/funded by NHS</option><option>Not sure</option></select>
+        </label>
+      </fieldset>
+
+      <fieldset class="step" data-title="Your details">
+        <legend class="sr">Your details</legend>
+        <label class="field">Full name *<input name="name" required autocomplete="name"></label>
+        <label class="field">Phone number *<input name="phone" type="tel" inputmode="tel" required autocomplete="tel"></label>
+        <label class="field">Email <span class="opt">(optional)</span><input name="email" type="email" inputmode="email" autocomplete="email"></label>
+        <label class="field">Anything else we should know? <span class="opt">(optional)</span><textarea name="notes" rows="3"></textarea></label>
+      </fieldset>
+
+      <div class="wizard__done" hidden>
+        <svg class="check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-15"/></svg>
+        <h3>Thank you — you’re all set.</h3>
+        <p>Your email app will open with your request ready to send to our team. If it’s urgent, call <a href="tel:02085947282">020 8594 7282</a> any time.</p>
+      </div>
+
+      <p class="wizard__err" role="alert" hidden>Please complete the highlighted fields.</p>
+      <div class="wizard__nav">
+        <button type="button" class="btn btn--ghost" data-back hidden>← Back</button>
+        <button type="button" class="btn btn--primary btn--lg" data-next>Continue</button>
+      </div>
+      <p class="wizard__note">No obligation. We never share your details.</p>
+    </form>

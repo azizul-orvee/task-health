@@ -1,0 +1,86 @@
+<section class="phero">
+  <div class="wrap phero__in">
+    <div class="phero__text">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/services/">Services</a><span>/</span><span aria-current="page">{{s_name}}</span></nav>
+      <p class="eyebrow">{{s_name}}</p>
+      <h1>{{s_title_html}}</h1>
+      <p class="phero__lead">{{s_intro}}</p>
+      <div class="phero__actions">
+        <a class="btn btn--primary btn--lg" href="/contact/?care={{s_care}}#consult">Request a consultation</a>
+        <a class="btn btn--line btn--lg" href="tel:02085947282">Call 020 8594 7282</a>
+      </div>
+      <ul class="phero__trust">
+        <li>CQC rated Good</li><li>Personalised care plan</li><li>Available 24/7</li>
+      </ul>
+    </div>
+    <div class="phero__media">
+      {{s_hero_img}}
+      <p class="phero__tag">{{s_tagline}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="wrap overview">
+    <div class="overview__text reveal">
+      <p class="eyebrow">Overview</p>
+      <p class="lede lede--lg">{{s_lede}}</p>
+    </div>
+    <aside class="overview__card reveal">
+      <h2 class="h3">Is {{s_name}} right for you?</h2>
+      <p>Every situation is different. Talk to our experienced team — we’ll listen first, then suggest the support that fits.</p>
+      <a class="btn btn--primary" href="/contact/?care={{s_care}}#consult">Ask our team</a>
+      <a class="overview__phone" href="tel:02085947282">or call <strong>020 8594 7282</strong> — 24/7</a>
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow reveal">What’s included</p>
+        <h2 class="reveal">{{s_features_title}}</h2>
+      </div>
+      <p class="reveal">Every care plan is built around the person — choose the support that matters, and change it as needs change.</p>
+    </div>
+    <ol class="feat">
+{{s_features}}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="wrap story">
+    <div class="story__media reveal">{{s_side_img}}</div>
+    <div class="reveal">
+      <p class="eyebrow">Our promise</p>
+      <p class="story__text">{{s_outro}}</p>
+      <figure class="story__quote">
+        <div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <blockquote>“{{s_quote}}”</blockquote>
+        <figcaption>{{s_quote_by}}</figcaption>
+      </figure>
+      <a class="link-arrow" href="/reviews/">Read more reviews <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+{{> proof}}
+
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <div>
+        <p class="eyebrow reveal">Explore</p>
+        <h2 class="reveal">Other ways <em>we can help</em></h2>
+      </div>
+      <a class="link-arrow reveal" href="/services/">See all services <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="related">
+{{s_related}}
+    </div>
+  </div>
+</section>
+
+{{> cta}}

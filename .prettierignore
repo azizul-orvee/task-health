@@ -1,0 +1,5 @@
+legacy-static
+.next
+node_modules
+public
+docs
