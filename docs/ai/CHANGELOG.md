@@ -2,6 +2,13 @@
 
 All changes to this project, newest first. Every AI tool and human must add an entry here after each change.
 
+## 2026-10-15 — Dummy commit to test the push workflow
+**Type:** docs
+**Tool:** Claude Code
+**What changed:**
+- Added this entry to `docs/ai/CHANGELOG.md`. Nothing else changed.
+**Why:** The user asked for a dummy change to test commit and push.
+
 ## 2026-10-15 — Design critique fixes on the home page
 **Type:** style
 **Tool:** Claude Code
