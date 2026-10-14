@@ -271,7 +271,7 @@ export default function ServicesPage() {
             </h2>
             <p>We’re available day and night — and in a crisis, we can often turn it around even quicker.</p>
           </div>
-          <a className="btn btn--white btn--lg" href="tel:02085947282">
+          <a className="btn btn--primary btn--lg" href="tel:02085947282">
             Call now — 020 8594 7282
           </a>
         </div>

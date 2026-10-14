@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ConsultForm from "@/components/ConsultForm";
+import HelpsList from "@/components/home/HelpsList";
 import HeroSlides from "@/components/home/HeroSlides";
 import Link from "next/link";
 import Proof from "@/components/Proof";
@@ -12,6 +13,27 @@ export const metadata: Metadata = {
     "CQC-rated Good home care across Redbridge and London. Domiciliary, live-in, respite, dementia and end-of-life care from a team with 50+ years of NHS experience.",
   alternates: { canonical: "/" },
 };
+
+const HELPS = [
+  "Call in Service",
+  "Cancer Care",
+  "Cleaning Service",
+  "Companionship",
+  "Dementia",
+  "Domestic Service",
+  "Food Preparation & Serving",
+  "High Dependency Care",
+  "Laundry Service",
+  "Learning Disability",
+  "Medication Assistance",
+  "Mental Health Conditions",
+  "Older Person Care",
+  "Palliative Care",
+  "Personal Hygiene Care",
+  "Physical Disability",
+  "Sensory Impairment",
+  "Shopping Services",
+];
 
 export default function HomePage() {
   return (
@@ -62,8 +84,8 @@ export default function HomePage() {
         <div className="wrap">
           <p className="eyebrow reveal">Welcome to Task Health Care</p>
           <h2 className="statement reveal">
-            We realise families need issues dealt with <em>quickly</em> and <em>efficiently</em> — and loved ones need
-            to be treated with <em>dignity</em>.
+            We realise families need issues dealt with quickly and efficiently — and loved ones need to be treated with{" "}
+            <em className="hl">dignity</em>.
           </h2>
           <div className="about__grid">
             <div className="about__media reveal">
@@ -203,26 +225,7 @@ export default function HomePage() {
           </div>
           <div className="helps reveal">
             <h3>Everything we can help with</h3>
-            <ul className="helps__list">
-              <li>Call in Service</li>
-              <li>Cancer Care</li>
-              <li>Cleaning Service</li>
-              <li>Companionship</li>
-              <li>Dementia</li>
-              <li>Domestic Service</li>
-              <li>Food Preparation &amp; Serving</li>
-              <li>High Dependency Care</li>
-              <li>Laundry Service</li>
-              <li>Learning Disability</li>
-              <li>Medication Assistance</li>
-              <li>Mental Health Conditions</li>
-              <li>Older Person Care</li>
-              <li>Palliative Care</li>
-              <li>Personal Hygiene Care</li>
-              <li>Physical Disability</li>
-              <li>Sensory Impairment</li>
-              <li>Shopping Services</li>
-            </ul>
+            <HelpsList items={HELPS} />
             <Link className="link-arrow" href="/services/">
               See full service details <span aria-hidden="true">→</span>
             </Link>
@@ -244,7 +247,7 @@ export default function HomePage() {
             </h2>
             <p>We’re available day and night — and in a crisis, we can often turn it around even quicker.</p>
           </div>
-          <a className="btn btn--white btn--lg" href="tel:02085947282">
+          <a className="btn btn--primary btn--lg" href="tel:02085947282">
             Call now — 020 8594 7282
           </a>
         </div>
@@ -353,6 +356,7 @@ export default function HomePage() {
               </h2>
             </div>
             <div className="badges reveal">
+              <span className="badges__label">Independently rated</span>
               <a href="https://www.cqc.org.uk/location/1-13376159979" target="_blank" rel="noopener">
                 <img
                   src="/assets/cqc-good.webp"
@@ -495,47 +499,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className="careers" id="careers">
-        <div className="wrap careers__in">
-          <div className="reveal">
-            <p className="eyebrow eyebrow--light">Join our community</p>
-            <h2>
-              Where compassion <em>meets career</em>
-            </h2>
-            <p>
-              Whether you’re a dedicated caregiver, a skilled nurse or an administrative professional, there’s a place
-              for you to thrive in our Home Care family — with a supportive, inclusive environment and real
-              opportunities for professional growth.
-            </p>
-            <div className="careers__cta">
-              <Link className="btn btn--white btn--lg" href="/careers/">
-                See openings &amp; apply
-              </Link>
-              <Link className="link-arrow link-arrow--light" href="/training/">
-                Our training <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-          <div className="careers__media reveal">
-            <img
-              src="/assets/banner-1-800.webp"
-              srcSet="/assets/banner-1-800.webp 800w, /assets/banner-1-1600.webp 1600w"
-              sizes="(min-width:1024px) 45vw, 100vw"
-              alt="A Task Healthcare carer smiling with a client"
-              width={800}
-              height={381}
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </section>
       <section className="section contact" id="contact">
         <div className="wrap contact__in">
           <div className="contact__side">
             <p className="eyebrow reveal">Request a consultation</p>
             <h2 className="reveal">
-              Let’s talk about <em>the care you need</em>
+              Let’s talk about <em className="hl">the care you need</em>
             </h2>
             <p className="reveal">
               Three quick steps and our care team will be in touch. Prefer to talk? We’re available 24/7 by phone.
@@ -571,46 +540,78 @@ export default function HomePage() {
                 </div>
               </li>
             </ul>
-            <div className="faq reveal">
-              <h3>Common questions</h3>
-              <details>
-                <summary>How quickly can care start?</summary>
-                <p>
-                  If you need us in a hurry, we can arrange a carer to start in less than 12 hours of you getting in
-                  touch — in a crisis, often even quicker.
-                </p>
-              </details>
-              <details>
-                <summary>What if my regular carer is sick or on holiday?</summary>
-                <p>
-                  We provide continuity of care. If your carer takes holiday, falls ill — or you simply don’t get on —
-                  we’ll provide a replacement.
-                </p>
-              </details>
-              <details>
-                <summary>Do you cover weekends and bank holidays?</summary>
-                <p>
-                  Yes. Our office is open Monday to Friday 9:00–18:00, we’re on call at weekends, and you can reach us
-                  24/7 by phone.
-                </p>
-              </details>
-              <details>
-                <summary>Can care respect our culture and language?</summary>
-                <p>
-                  Absolutely. Services are tailored to each client’s cultural and language needs, and you can customise
-                  care as needs change.
-                </p>
-              </details>
-              <details>
-                <summary>How is care funded?</summary>
-                <p>
-                  We can work with private (self-funded) clients, Direct Payments, and care arranged through the Local
-                  Authority or NHS. Tell us your situation in the form and we’ll talk you through the options.
-                </p>
-              </details>
-            </div>
           </div>
           <ConsultForm />
+          <div className="faq reveal">
+            <h3>Common questions</h3>
+            <details>
+              <summary>How quickly can care start?</summary>
+              <p>
+                If you need us in a hurry, we can arrange a carer to start in less than 12 hours of you getting in touch
+                — in a crisis, often even quicker.
+              </p>
+            </details>
+            <details>
+              <summary>What if my regular carer is sick or on holiday?</summary>
+              <p>
+                We provide continuity of care. If your carer takes holiday, falls ill — or you simply don’t get on —
+                we’ll provide a replacement.
+              </p>
+            </details>
+            <details>
+              <summary>Do you cover weekends and bank holidays?</summary>
+              <p>
+                Yes. Our office is open Monday to Friday 9:00–18:00, we’re on call at weekends, and you can reach us
+                24/7 by phone.
+              </p>
+            </details>
+            <details>
+              <summary>Can care respect our culture and language?</summary>
+              <p>
+                Absolutely. Services are tailored to each client’s cultural and language needs, and you can customise
+                care as needs change.
+              </p>
+            </details>
+            <details>
+              <summary>How is care funded?</summary>
+              <p>
+                We can work with private (self-funded) clients, Direct Payments, and care arranged through the Local
+                Authority or NHS. Tell us your situation in the form and we’ll talk you through the options.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section className="join" id="careers" aria-labelledby="join-title">
+        <div className="wrap join__in reveal">
+          <div className="join__media">
+            <img
+              src="/assets/banner-1-800.webp"
+              alt="A Task Healthcare carer smiling with a client"
+              width={800}
+              height={381}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Join our community</p>
+            <h2 id="join-title">
+              Where compassion <em>meets career</em>
+            </h2>
+            <p>
+              Whether you’re a dedicated caregiver, a skilled nurse or an administrative professional, there’s a place
+              for you to thrive in our Home Care family.
+            </p>
+          </div>
+          <div className="join__cta">
+            <Link className="btn btn--line" href="/careers/">
+              See openings &amp; apply
+            </Link>
+            <Link className="link-arrow" href="/training/">
+              Our training <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </>

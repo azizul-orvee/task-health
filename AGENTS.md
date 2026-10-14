@@ -20,7 +20,7 @@ A full redesign of the website for **Task Healthcare Limited**, a CQC-rated Good
 - **Rendering:** every route is statically prerendered (SSG), with no server data or env vars.
 - **Deploy:** not deployed yet. Vercel is the natural fit. (TODO: confirm with user)
 - **Package manager:** npm (`package-lock.json`)
-- **Not a git repo** yet
+- **Git:** GitHub `azizul-orvee/task-health` (https://github.com/azizul-orvee/task-health), default branch `main`.
 - **`legacy-static/`** is the previous plain-HTML version, kept for reference only. It isn't built or served, and is excluded in `tsconfig`. It's safe to delete once the user confirms.
 
 ## Conventions

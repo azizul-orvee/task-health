@@ -2,6 +2,44 @@
 
 All changes to this project, newest first. Every AI tool and human must add an entry here after each change.
 
+## 2026-10-15 — Design critique fixes on the home page
+**Type:** style
+**Tool:** Claude Code
+**What changed:**
+- Services bento has no gaps any more. Desktop: tiles 5 and 6 span 2 columns and show their descriptions. Tablet: the last tile spans the full row (`app/globals.css`).
+- Accent discipline:
+  - `h2 em` is now italic in the heading colour. Blue italic is reserved for `h1 em`, `blockquote em` and an opt-in `em.hl` (`app/globals.css`).
+  - Home uses `.hl` only on "dignity" and "the care you need". "quickly" and "efficiently" are plain text again (`app/page.tsx`).
+  - This change is site-wide, so inner-page h2 accents are now ink italic.
+- The emergency band `.urgent` is now navy (`--ink`) with a blue `btn--primary` "Call now" button (`app/page.tsx`, `app/services/page.tsx`).
+- The careers section moved below the consultation form as a slim white `.join` strip with a `btn--line` button, and its paragraph was shortened (`app/page.tsx`, `app/globals.css`). The id stays `#careers`.
+- "Who needs care?" order:
+  - The options are now the shared exported `WHO` constant in `components/ConsultForm.tsx`, used by `components/home/QuickChips.tsx`.
+  - The hero and the form now use the same order: A parent, A partner, Myself, Someone else.
+- Rating badges:
+  - They sit on cream cards with an "Independently rated" label and are no longer cropped (`.badges`, `.badges__label`).
+  - The links are unchanged.
+- Mobile:
+  - New `components/home/HelpsList.tsx` (client) shows 8 of the 18 service chips plus a "Show all 18 services" button below 640px. Hiding only happens under `.js`.
+  - The FAQ is now a sibling of the form, so it comes after the form on mobile. On desktop it stays in the left column via `grid-template-areas`.
+  - The FAQ change applies to `app/page.tsx` and `app/contact/page.tsx`.
+- `components/Proof.tsx`: only "50+" counts up. "9.9" and "<12h" are static, so they never show a lower or wrong figure mid-animation.
+**Why:** The user asked to apply all seven fixes from the design critique.
+**Notes / gotchas:**
+- Checked at 375px, 768px and 1440px. Chip prefill works.
+- The mobile home page went from 15,109px to 14,461px.
+- `app/globals.css` was already not Prettier-formatted before this change, and that was left as is.
+
+## 2026-10-10 — Git repository initialised and pushed to GitHub
+**Type:** config
+**Tool:** Claude Code
+**What changed:**
+- `git init`, then the first commit `e50b31c` ("first commit") of the whole project on branch `main`.
+- Remote `origin` is https://github.com/azizul-orvee/task-health.git, and `main` was pushed with upstream tracking.
+- `.gitignore`: added `.claude/.cc-writes/`.
+**Why:** The user asked to commit and push the project to GitHub.
+**Notes / gotchas:** The sandbox blocks writing `.git/`, so the git commands were run outside it with the user's request. These doc updates came after the push and are uncommitted.
+
 ## 2026-10-10 — Migrated to Next.js 16 + TypeScript
 **Type:** refactor
 **Tool:** Claude Code

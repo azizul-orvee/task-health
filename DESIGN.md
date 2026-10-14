@@ -20,5 +20,5 @@
 - Commitment and consistency: an easy first tap in the hero carries into the multi-step form.
 - Zeigarnik: a 3-step form with a progress bar.
 - Progressive disclosure: the full list of aims and the FAQs are accordions.
-- Visual rhythm: sections alternate cream, white, navy and blue.
+- Visual rhythm: sections alternate cream, white and navy. Blue is kept for actions, the hero italic and `em.hl`. On the home page the emergency band is navy with a blue button.
 - Fitts: a sticky Call / Consultation bar in the thumb zone on mobile.

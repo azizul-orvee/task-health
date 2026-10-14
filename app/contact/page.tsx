@@ -105,46 +105,46 @@ export default function ContactPage() {
                 </tr>
               </tbody>
             </table>
-            <div className="faq reveal">
-              <h3>Common questions</h3>
-              <details>
-                <summary>How quickly can care start?</summary>
-                <p>
-                  If you need us in a hurry, we can arrange a carer to start in less than 12 hours of you getting in
-                  touch — in a crisis, often even quicker.
-                </p>
-              </details>
-              <details>
-                <summary>What if my regular carer is sick or on holiday?</summary>
-                <p>
-                  We provide continuity of care. If your carer takes holiday, falls ill — or you simply don’t get on —
-                  we’ll provide a replacement.
-                </p>
-              </details>
-              <details>
-                <summary>Do you cover weekends and bank holidays?</summary>
-                <p>
-                  Yes. Our office is open Monday to Friday 9:00–18:00, we’re on call at weekends, and you can reach us
-                  24/7 by phone.
-                </p>
-              </details>
-              <details>
-                <summary>Which areas do you cover?</summary>
-                <p>
-                  We’re based in Ilford and care for people across Redbridge, East London and Essex — including Barking
-                  &amp; Dagenham, Tower Hamlets, Newham, Waltham Forest, Enfield and Dartford — and all over London.
-                </p>
-              </details>
-              <details>
-                <summary>How is care funded?</summary>
-                <p>
-                  We can work with private (self-funded) clients, Direct Payments, and care arranged through the Local
-                  Authority or NHS. Tell us your situation in the form and we’ll talk you through the options.
-                </p>
-              </details>
-            </div>
           </div>
           <ConsultForm />
+          <div className="faq reveal">
+            <h3>Common questions</h3>
+            <details>
+              <summary>How quickly can care start?</summary>
+              <p>
+                If you need us in a hurry, we can arrange a carer to start in less than 12 hours of you getting in touch
+                — in a crisis, often even quicker.
+              </p>
+            </details>
+            <details>
+              <summary>What if my regular carer is sick or on holiday?</summary>
+              <p>
+                We provide continuity of care. If your carer takes holiday, falls ill — or you simply don’t get on —
+                we’ll provide a replacement.
+              </p>
+            </details>
+            <details>
+              <summary>Do you cover weekends and bank holidays?</summary>
+              <p>
+                Yes. Our office is open Monday to Friday 9:00–18:00, we’re on call at weekends, and you can reach us
+                24/7 by phone.
+              </p>
+            </details>
+            <details>
+              <summary>Which areas do you cover?</summary>
+              <p>
+                We’re based in Ilford and care for people across Redbridge, East London and Essex — including Barking
+                &amp; Dagenham, Tower Hamlets, Newham, Waltham Forest, Enfield and Dartford — and all over London.
+              </p>
+            </details>
+            <details>
+              <summary>How is care funded?</summary>
+              <p>
+                We can work with private (self-funded) clients, Direct Payments, and care arranged through the Local
+                Authority or NHS. Tell us your situation in the form and we’ll talk you through the options.
+              </p>
+            </details>
+          </div>
         </div>
       </section>
       <section className="map">

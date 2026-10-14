@@ -2,6 +2,24 @@
 
 Why things are the way they are. Newest first.
 
+## 2026-10-15 — Blue italic accents are opt-in
+**Context:**
+- The design critique found italic-blue `<em>` in almost every heading.
+- At that frequency the blue was just decoration, and it looked like links.
+- It also broke the rule that blue is for actions.
+**Decision:**
+- `h2 em` is italic in the heading's own colour.
+- Blue is kept for `h1 em` (hero moments), `blockquote em` and `em.hl`. Use `.hl` at most once or twice per page.
+- Dark sections keep their own light-blue overrides.
+**Consequences:** Inner pages changed too. To bring blue back on a specific h2, add `className="hl"`.
+
+## 2026-10-15 — Careers sits after the consultation form on the home page
+**Context:** The careers block sat between the reviews and the form, which pulled families toward a recruitment pitch at the moment they were deciding to get in touch.
+**Decision:**
+- Move careers below the form as a slim white `.join` strip with a secondary `btn--line` button.
+- It isn't navy, so it doesn't merge into the navy footer.
+**Consequences:** Visual rhythm: the emergency band is now navy, so blue is a surface only in `.cta-band` on inner pages.
+
 ## 2026-10-10 — Next.js + TypeScript replaces the Python-built static site
 **Context:** The user wants the site in Next.js and TypeScript.
 **Decision:**

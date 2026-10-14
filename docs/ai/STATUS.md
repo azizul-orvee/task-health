@@ -1,4 +1,4 @@
-# Status — last updated 2026-10-10
+# Status — last updated 2026-10-15
 
 ## Current state
 The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404 are rebuilt with the same design and content as the earlier static version.
@@ -11,9 +11,19 @@ The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404
   - hero-chip pre-fill and `?care=` pre-select
   - redirect from old URLs
   - 404 page
-- Not deployed and not a git repo.
+- Not deployed. Code is on GitHub: https://github.com/azizul-orvee/task-health (`main`).
 
 ## ✅ Recently done
+- 2026-10-15: applied the seven design-critique fixes on the home page:
+  - bento grid gaps
+  - accent discipline
+  - navy emergency band
+  - careers strip moved below the form
+  - shared chip order
+  - rating badges
+  - mobile chip collapse and FAQ order
+  - count-up limited to 50+
+  See CHANGELOG.
 - Ported the static site to the Next.js App Router. Shared UI is in React components, and the care pages are one typed dynamic route.
 - Business details are centralised in `lib/site.ts`, with typed service data in `lib/services.ts`.
 - Fonts are self-hosted via `next/font/local` (`app/fonts/`).
@@ -25,6 +35,7 @@ The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404
 
 ## ⏭️ Next up
 - Client review.
+- Optional, from the critique: a header logo variant without the tagline, which is about 5px tall and can't be read.
 - Choose hosting (Vercel recommended) and point the domain. TODO: confirm with user.
 - Replace the `mailto:` form with a real submission: a Next.js Route Handler or Server Action plus an email service (e.g. Resend), or Formspree.
 - Delete `legacy-static/` once the user is happy with the Next.js version.

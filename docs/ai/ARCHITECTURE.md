@@ -21,7 +21,7 @@ task-health/
 │   ├── PageEffects.tsx (client) ← body.is-loaded (hero intro) + .reveal IntersectionObserver, re-run per route
 │   ├── ConsultForm.tsx (client) ← 3-step consultation wizard (React state) → mailto:
 │   ├── CountUp.tsx (client), Proof.tsx, CtaBand.tsx, Img.tsx, icons.tsx
-│   └── home/ HeroSlides.tsx, Rotator.tsx, QuickChips.tsx (client)
+│   └── home/ HeroSlides.tsx, Rotator.tsx, QuickChips.tsx, HelpsList.tsx (client)
 ├── lib/
 │   ├── site.ts               ← business details + consultHref()
 │   ├── services.ts           ← typed content for the 6 care pages
@@ -35,7 +35,7 @@ task-health/
 ## Routes
 | Route | File | Notes |
 |---|---|---|
-| `/` | `app/page.tsx` | Hero (HeroSlides, Rotator, QuickChips), Proof, about, services bento, emergency, how it works, objectives, reviews, areas, careers, FAQ, ConsultForm (`#contact`) |
+| `/` | `app/page.tsx` | Hero (HeroSlides, Rotator, QuickChips), Proof, about, services bento, emergency, how it works, objectives, reviews, areas, ConsultForm + FAQ (`#contact`), careers strip (`.join`) |
 | `/domiciliary-care/` … `/supported-living/` | `app/[service]/page.tsx` + `lib/services.ts` | Page hero, overview + sticky card, numbered features, promise + quote, Proof, related services, CtaBand |
 | `/services/` | `app/services/page.tsx` | Care types, service list, conditions, live-in tasks, advanced care, emergency, all services |
 | `/about/` | `app/about/page.tsx` | Statement of Purpose download (`/assets/docs/statement-of-purpose.docx`) |

@@ -27,10 +27,11 @@ const empty: Data = {
   notes: "",
 };
 
-const WHO = [
-  { value: "Myself", label: "Myself" },
+/** "Who needs care?" options, in the order the homepage hero chips show them. */
+export const WHO = [
   { value: "A parent", label: "A parent" },
   { value: "A partner", label: "A partner" },
+  { value: "Myself", label: "Myself" },
   { value: "Another family member", label: "Someone else" },
 ];
 const WHEN = [
