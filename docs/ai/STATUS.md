@@ -1,4 +1,4 @@
-# Status — last updated 2026-10-15
+# Status — last updated 2026-10-22
 
 ## Current state
 The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404 are rebuilt with the same design and content as the earlier static version.
@@ -14,6 +14,7 @@ The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404
 - Not deployed. Code is on GitHub: https://github.com/azizul-orvee/task-health (`main`).
 
 ## ✅ Recently done
+- 2026-10-22: tightened the vertical spacing between sections site-wide with the new `--space-section` token and a smaller `--space-l`. Also fixed the large eyebrow-to-heading gap in centred section heads. See CHANGELOG.
 - 2026-10-15: applied the seven design-critique fixes on the home page:
   - bento grid gaps
   - accent discipline
@@ -42,6 +43,7 @@ The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404
 - Optional: ESLint (`eslint-config-next`), analytics, per-page OG images.
 
 ## 🐛 Known issues
+- `npm run format` would reformat many files that were never formatted, including the whole compact `app/globals.css`. Run it once in its own commit, or scope it to changed files.
 - The form doesn't submit to a server. It depends on the visitor's email app.
 - Unused files in `public/assets/`: the original `*.jpg`s and `logo.png`. Delete them before deploy.
 - The related-services grid on care pages leaves one orphan tile on mobile (5 tiles in 2 columns). This is cosmetic.

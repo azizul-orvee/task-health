@@ -2,6 +2,16 @@
 
 All changes to this project, newest first. Every AI tool and human must add an entry here after each change.
 
+## 2026-10-22 — Tighter spacing between sections, site-wide
+**Type:** style
+**Tool:** Claude Code
+**What changed:**
+- New `--space-section` token, `clamp(3rem, 2.2rem + 3.2vw, 5.25rem)`, about 48px on mobile and 81px at 1440px. Section padding now uses it instead of `--space-xl`, which was about 72–134px. It applies to `.section`, `.careers`, `.footer`, `.phero` (bottom), `.cta-band`, `.pull` and `.notfound` (`app/globals.css`). `--space-xl` stays for column gaps.
+- `--space-l` reduced from `clamp(2.5rem,1.8rem + 3vw,4.5rem)` to `clamp(2rem,1.5rem + 2vw,3.5rem)` (about 53px at 1440px, down from 72px). This tightens heading-to-content spacing, the `.urgent` and `.join` bands, and `.center` CTAs.
+- Fix: centred section heads (`.section__head--center`, e.g. "How it works") inherited the desktop `gap: var(--space-l)` as a row gap. That left about 72px between the eyebrow and the h2. They now use `--space-s`.
+**Why:** The user found the white space between sections too large across the site.
+**Notes / gotchas:** `npm run format` reformats files that were never Prettier-formatted (`app/globals.css`, `AGENTS.md`, `tsconfig.json` …) into thousands of lines of churn. It was reverted and not run.
+
 ## 2026-10-15 — Dummy commit to test the push workflow
 **Type:** docs
 **Tool:** Claude Code
