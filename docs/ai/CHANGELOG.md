@@ -2,6 +2,89 @@
 
 All changes to this project, newest first. Every AI tool and human must add an entry here after each change.
 
+## 2026-11-07 — Eight more homecare.co.uk reviews; reviews moved to one data list
+**Type:** content | refactor
+**Tool:** Claude Code
+**What changed:**
+- Added 8 reviews the user pasted from homecare.co.uk: C P (4 Sep 2025), N S (25 Aug 2025), J M (25 Aug 2025), Jen H (17 Jan 2025), Nathan J (12 Dec 2024), Shirley S (18 Sep 2024), John F (13 Sep 2024) and H V (11 Apr 2024). Wording is as published, with straight apostrophes made curly and "She" lower-cased in C P's review.
+- `lib/reviews.ts` now holds every homecare.co.uk review as `reviews: VerifiedReview[]` (newest first, ISO `date`, full `text`, optional marquee `excerpt`, optional `inMarquee: false`). `longDate()` and `shortDate()` format dates by hand rather than with `Intl`, so server and client output match. New `VerifiedReview` type in `lib/types.ts`.
+- `app/reviews/page.tsx`: the six hand-written masonry cards are replaced by `reviews.map(...)`, giving 14 cards.
+- `homeReviews` (the marquee) is now built from the list: Pamela Harris and Valerie, Felsted (live-site quotes) first, then every review except Pamela H, who is already the feature quote above it. That's 15 cards. The loop is 150s at the same speed. Long reviews (Jen H, John F, H V) use ellipsis excerpts.
+**Why:** The user asked to add all the reviews they pasted.
+**Notes / gotchas:**
+- Skipped: S M (already listed) and Louise F (9 Apr 2024). Louise F's text is the same review as the "Valerie, Felsted" long read on `/reviews` and the dementia-care quote in `lib/services.ts`, which the live site credits to Valerie. Waiting on the user to choose which attribution to keep.
+- To add a review, add one entry to `reviews` in `lib/reviews.ts`. It then appears on `/reviews` and in the home marquee.
+
+## 2026-11-07 — Centred text on the review marquee cards
+**Type:** style
+**Tool:** Claude Code
+**What changed:**
+- `.marquee__item .quote` now has `text-align:center` (`app/globals.css`). The quote and the reviewer name are centred under the star tiles, like the reference video. Only the marquee is affected; the `/reviews` grid stays left-aligned.
+**Why:** The user asked for it.
+
+## 2026-11-07 — Green, centred star tiles on the review marquee
+**Type:** style
+**Tool:** Claude Code
+**What changed:**
+- The marquee cards in `components/home/ReviewMarquee.tsx` now show five green square tiles with white SVG stars (`.rating`, `.rating__star`), centred above the quote, instead of gold `★★★★★` text. The accessible name is on the row (`role="img"`, "5 out of 5 stars").
+- New colour token `--green:#1a9a5c` in `app/globals.css`, used only for these tiles (white star on it is above 3:1). The quote text stays left-aligned.
+**Why:** The user asked for the stars to be centred and green, as in their reference video.
+**Notes / gotchas:** The gold `.stars` glyphs are still used everywhere else, including the `/reviews` page and the care pages.
+
+## 2026-11-07 — Fix: review cards vanished when "Pause reviews" was clicked
+**Type:** fix
+**Tool:** Claude Code
+**What changed:**
+- `components/home/ReviewMarquee.tsx`: the root `className` is now constant (`marquee reveal`). The paused state is a `data-paused` attribute, and the CSS selector changed from `.marquee.is-paused` to `.marquee[data-paused]` in `app/globals.css`.
+**Why:** `PageEffects` adds `is-in` to `.reveal` elements directly in the DOM, outside React. Toggling pause re-rendered the `className`, React overwrote it, `is-in` was dropped, and `.js .reveal` hid the whole marquee (opacity 0).
+**Notes / gotchas:** Never give a `.reveal` element a `className` that changes with state. Put state in a `data-*` attribute or on a child element. No other component did this (checked with a grep).
+
+## 2026-11-06 — Scrolling review marquee on the home page
+**Type:** feature
+**Tool:** Claude Code
+**What changed:**
+- New `components/home/ReviewMarquee.tsx` (client) replaces the 4-card `.quotes` grid in the home page reviews section (`app/page.tsx`). It runs full width, outside `.wrap`, between the Pamela H feature quote and the CTA row.
+- The cards are rendered twice, and `.marquee__track` slides by `-50%` in a CSS `@keyframes marquee` loop, so the loop is seamless. They move right to left, like the user's reference video. The duration is `var(--n) * 10s` (about 36px/s), so adding reviews keeps the same speed.
+- Pauses on hover (`@media (hover:hover)`), and a "Pause reviews / Play reviews" button (`aria-pressed`) covers touch and keyboard users (WCAG 2.2.2). The button is hidden under `.no-js`. The duplicate list is `aria-hidden` and `inert`.
+- Reduced motion: no animation, and the row becomes a horizontally scrollable, scroll-snapped list. The duplicate list and the button are hidden.
+- Review data moved to `lib/reviews.ts` (`homeReviews`, new `Review` type in `lib/types.ts`). It holds 7 reviews: the 4 that were on the home page plus G V, S M and Y J, all shortened with ellipses from the verified full texts on `/reviews`. No wording was changed.
+- `app/globals.css`: added the `.marquee*` rules. The unused `.quotes` grid rules were replaced by the marquee's 1024px card width (340px).
+**Why:** The user wanted the reviews to scroll sideways like a Shopify "Scrolling Reviews" section they shared as a video.
+**Notes / gotchas:** To reverse the direction, add `animation-direction:reverse` to `.marquee__track`. The `/reviews` page keeps its static masonry grid on purpose, because it's the full archive.
+
+## 2026-11-06 — Fallback preview config on port 4322
+**Type:** config
+**Tool:** Claude Code
+**What changed:**
+- Added a `site-4322` entry to `.claude/launch.json` that runs `next dev -p 4322`. The original `site` entry (port 4321) is unchanged.
+**Why:** Port 4321 was taken by another local project's dev server (se-mobile-tyre), and `npm run dev` pins 4321.
+**Notes / gotchas:** If 4321 is busy, use `preview_start` with name `site-4322`. The dev server logs a 404 for `/favicon.ico` (no favicon at that path).
+
+## 2026-10-22 — Mockup reviews verified; dates corrected
+**Type:** content
+**Tool:** Claude Code
+**What changed:**
+- Checked the six review quotes that weren't on the live site against the homecare.co.uk profile (https://www.homecare.co.uk/homecare/agency.cfm/id/65432240283, Reviews tab): Janine G, G V, Pamela H ("13 years"), Kimberley K, S M and Y J. All six are real, and the wording matches apart from light spelling fixes and trimming. None were removed.
+- Every date was one year early. Corrected them in `app/reviews/page.tsx`, `app/page.tsx` and `lib/services.ts`:
+  - Janine G: 19 Sep 2025
+  - G V: 3 Sep 2025
+  - Pamela H: 25 Jun 2025
+  - Kimberley K: 12 Dec 2024
+  - S M: 8 Oct 2024
+  - Y J: 13 Sep 2024
+**Why:** The user asked to verify the reviews taken from the vibepreview mockup and remove any that couldn't be found.
+**Notes / gotchas:**
+- homecare.co.uk sits behind an Imperva CAPTCHA. curl gets a stub page, so the user has to pass the CAPTCHA in a real browser. Full review text is in the DOM behind CSS "Read more" toggles, so read `textContent`, not `innerText`.
+- The profile now shows **9.6** (9.625, based on 9 reviews in the last 2 years; 16 all-time). The site still says 9.9 in `components/Proof.tsx`, the badge alt text in `app/page.tsx` and `app/reviews/page.tsx`, and the reviews page meta. That's a protected claim, so it was left for the user to decide.
+- The "goes beyond mere professionalism" quote, credited to "Valerie, Felsted" on the live site, appears on homecare.co.uk as Louise F (daughter-in-law), 9 April 2024. The live site's attribution was kept.
+
+## 2026-10-22 — Reference sites recorded
+**Type:** docs
+**Tool:** Claude Code
+**What changed:**
+- Added a "Reference sites" section to `AGENTS.md` with the live site and the vibepreview mockup (`/about`).
+**Why:** The user wants every session and tool to know what "the reference sites" means.
+
 ## 2026-10-22 — Tighter spacing between sections, site-wide
 **Type:** style
 **Tool:** Claude Code

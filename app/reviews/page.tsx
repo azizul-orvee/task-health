@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CtaBand from "@/components/CtaBand";
 import Link from "next/link";
+import { longDate, reviews } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: "Customer Reviews | Task Healthcare — rated 9.9 on homecare.co.uk",
@@ -62,75 +63,17 @@ export default function ReviewsPage() {
             </figcaption>
           </figure>
           <div className="masonry">
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “Very caring, fantastic support, always arrives on time, no clock watching, my mother is treated with
-                dignity, patience and has all the time in the world for my mother. Whatever my mother asks of she is
-                greeted with all the help she needs in a very kind and gentle way. Cannot ask for anything more, she
-                goes far and beyond.”
-              </p>
-              <cite>Janine G · 19 September 2024</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “I am happy with all the team, all of the girls are lovely. I am grateful for everything they do. The
-                service has been excellent, I have my regular carers who come to see me. I would highly recommend Task
-                Health Care to everyone.”
-              </p>
-              <cite>G V · 3 September 2024</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “All my needs are taken care of, and I am never left without a carer. My carers come to feel like
-                members of my family. I have been using Task Health Care Agency for the past 13 years. Most important of
-                all, I am treated with dignity and not as an old person with dementia.”
-              </p>
-              <cite>Pamela H · 25 June 2024</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “I can’t express enough gratitude for the incredible care my grandma received from Task Health Care.
-                They go above and beyond to ensure she was comfortable and well looked after. Not just professional but
-                incredibly compassionate. No problems at all, I would definitely recommend Task Health Care Ltd.
-                Amazing.”
-              </p>
-              <cite>Kimberley K · 12 December 2023</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “We have been using Task Health Care for over 2 years now, speaking and dealing with the manager and
-                meeting her on many occasions. She is really professional, helpful, kind and everything she should be in
-                this profession, and all the carers she has provided have been very kind and caring with my 92-year-old
-                mother.”
-              </p>
-              <cite>S M · 8 October 2023</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “I cannot express how happy, contented and in safe hands I am. They will go out of their way to make me
-                happy, even staying a bit over their time. I would 100% refer Task Health Care Ltd to anyone who needs
-                care, as they go above and beyond to make you happy and comfortable.”
-              </p>
-              <cite>Y J · 13 September 2023</cite>
-            </blockquote>
+            {reviews.map((r) => (
+              <blockquote key={`${r.name}-${r.date}`} className="quote reveal">
+                <div className="stars" aria-label="5 out of 5">
+                  ★★★★★
+                </div>
+                <p>“{r.text}”</p>
+                <cite>
+                  {r.name} · {longDate(r.date)}
+                </cite>
+              </blockquote>
+            ))}
           </div>
         </div>
       </section>

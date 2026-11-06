@@ -5,6 +5,11 @@
 ## What this is
 A full redesign of the website for **Task Healthcare Limited**, a CQC-rated Good home care agency in Ilford/Redbridge, London. Live site: https://taskhealthcare.co.uk/ (WordPress). The redesign is a **Next.js + TypeScript** site that rebuilds every page of the live site: home, 6 care pages, services, about, training, careers, reviews, contact and 404. Its goal is to turn visiting families into **consultation requests** and phone calls.
 
+## Reference sites
+When the user says "the reference sites", they mean both of these:
+- https://taskhealthcare.co.uk/: the live site and the source of truth for content, images, contact details and reviews.
+- https://preview-1784908701136982255.vibepreview.com/about: the user's vibe-coded redesign mockup, used as a style and structure reference. It blocks curl, so view it in a browser. Its facts (prices, some reviews) are unverified until they're confirmed on the live site.
+
 ## Read these next
 1. `docs/ai/STATUS.md` — where things stand now and what's next (read first)
 2. `docs/ai/CHANGELOG.md` — history of every change (read the latest entries)

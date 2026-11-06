@@ -5,6 +5,8 @@ import HeroSlides from "@/components/home/HeroSlides";
 import Link from "next/link";
 import Proof from "@/components/Proof";
 import QuickChips from "@/components/home/QuickChips";
+import ReviewMarquee from "@/components/home/ReviewMarquee";
+import { homeReviews } from "@/lib/reviews";
 import Rotator from "@/components/home/Rotator";
 
 export const metadata: Metadata = {
@@ -390,48 +392,9 @@ export default function HomePage() {
               <strong>Pamela H.</strong> · client for 13 years
             </figcaption>
           </figure>
-          <div className="quotes">
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “I am 90 and rely on carers for my everyday living, and Sharon is one of the best carers I have ever
-                had. I have come to look on her as a friend, and feel I would be lost without her.”
-              </p>
-              <cite>Pamela Harris</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “Very caring, fantastic support, always arrives on time, no clock watching. My mother is treated with
-                dignity… she goes far and beyond.”
-              </p>
-              <cite>Janine G · Sept 2024</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “Task Healthcare goes beyond mere professionalism. They create a sense of family — a bond that
-                transcends the caregiver-patient relationship.”
-              </p>
-              <cite>Valerie, Felsted</cite>
-            </blockquote>
-            <blockquote className="quote reveal">
-              <div className="stars" aria-label="5 out of 5">
-                ★★★★★
-              </div>
-              <p>
-                “Incredible care for my grandma. Not just professional but incredibly compassionate. I would definitely
-                recommend Task Health Care.”
-              </p>
-              <cite>Kimberley K · Dec 2023</cite>
-            </blockquote>
-          </div>
+        </div>
+        <ReviewMarquee reviews={homeReviews} />
+        <div className="wrap">
           <div className="center reveal center--row">
             <a className="btn btn--primary btn--lg" href="#contact">
               Request a consultation

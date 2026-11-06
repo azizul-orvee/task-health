@@ -72,7 +72,7 @@ export const services: Service[] = [
     careQuery: "domiciliary",
     quote: {
       text: "Very caring, fantastic support, always arrives on time, no clock watching. My mother is treated with dignity and patience… she goes far and beyond.",
-      by: "Janine G · September 2024",
+      by: "Janine G · September 2025",
     },
   },
   {
@@ -216,7 +216,7 @@ export const services: Service[] = [
     careQuery: "dementia",
     quote: {
       text: "Most important of all, I am treated with dignity and not as an old person with dementia.",
-      by: "Pamela H · June 2024",
+      by: "Pamela H · June 2025",
     },
   },
   {
@@ -286,7 +286,7 @@ export const services: Service[] = [
     careQuery: "respite",
     quote: {
       text: "I am happy with all the team, all of the girls are lovely. The service has been excellent. I would highly recommend Task Health Care to everyone.",
-      by: "G V · September 2024",
+      by: "G V · September 2025",
     },
   },
   {
@@ -430,7 +430,7 @@ export const services: Service[] = [
     careQuery: "supported living",
     quote: {
       text: "I can’t express enough gratitude for the incredible care my grandma received. Task Health Care are not just professional but incredibly compassionate.",
-      by: "Kimberley K · December 2023",
+      by: "Kimberley K · December 2024",
     },
   },
 ];

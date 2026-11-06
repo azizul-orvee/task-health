@@ -1,4 +1,4 @@
-# Status — last updated 2026-10-22
+# Status — last updated 2026-11-07
 
 ## Current state
 The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404 are rebuilt with the same design and content as the earlier static version.
@@ -14,6 +14,11 @@ The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404
 - Not deployed. Code is on GitHub: https://github.com/azizul-orvee/task-health (`main`).
 
 ## ✅ Recently done
+- 2026-11-07: added 8 more homecare.co.uk reviews (14 on `/reviews`, 15 in the home marquee). All reviews now come from one list in `lib/reviews.ts`.
+- 2026-11-07: the marquee cards now have green star tiles and centred text, like the reference video. Fixed the bug where clicking Pause made all the cards disappear.
+- 2026-11-06: the home page reviews are now an endless sideways marquee (`components/home/ReviewMarquee.tsx`, data in `lib/reviews.ts`). It pauses on hover and has a Pause button; with reduced motion it becomes a static swipeable row. The `/reviews` page grid is unchanged.
+- 2026-10-22: verified all the mockup reviews on homecare.co.uk. None were removed, and the dates were corrected (each was a year early).
+- 2026-10-22: recorded the two reference sites (live site and vibepreview mockup) in `AGENTS.md`.
 - 2026-10-22: tightened the vertical spacing between sections site-wide with the new `--space-section` token and a smaller `--space-l`. Also fixed the large eyebrow-to-heading gap in centred section heads. See CHANGELOG.
 - 2026-10-15: applied the seven design-critique fixes on the home page:
   - bento grid gaps
@@ -50,8 +55,10 @@ The site is now **Next.js 16 + TypeScript**. All 12 live-site pages plus the 404
 - Some converted page copy still hard-codes `tel:` and `mailto:` links rather than using `lib/site.ts`.
 
 ## ⚠️ Watch out
+- homecare.co.uk now shows a score of **9.6**, but the site claims 9.9 (`components/Proof.tsx`, the badge alt text in `app/page.tsx` and `app/reviews/page.tsx`, and the reviews page meta). Waiting on the user to decide.
+- **Louise F vs "Valerie, Felsted":** they're the same review. homecare.co.uk credits it to Louise F (9 Apr 2024); the live site and this site credit it to Valerie, Felsted (the `/reviews` long read and the dementia-care quote). Louise F isn't in `lib/reviews.ts`, to avoid listing it twice. Waiting on the user.
 - **Content to verify with the client:**
-  - The reviews from Janine G, G V, Kimberley K, S M and Y J, and the funding FAQ, came from the user's reference mockup.
+  - The funding FAQ came from the user's reference mockup and is still unverified. The mockup reviews were verified on homecare.co.uk on 2026-10-22.
   - The third phone number, 07816 834903, comes from the live contact page.
 - **No invented facts:** there's no fees section, because the live site lists no prices.
 - **Sandbox quirks:**

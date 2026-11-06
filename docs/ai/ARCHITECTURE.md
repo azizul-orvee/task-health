@@ -21,11 +21,12 @@ task-health/
 │   ├── PageEffects.tsx (client) ← body.is-loaded (hero intro) + .reveal IntersectionObserver, re-run per route
 │   ├── ConsultForm.tsx (client) ← 3-step consultation wizard (React state) → mailto:
 │   ├── CountUp.tsx (client), Proof.tsx, CtaBand.tsx, Img.tsx, icons.tsx
-│   └── home/ HeroSlides.tsx, Rotator.tsx, QuickChips.tsx, HelpsList.tsx (client)
+│   └── home/ HeroSlides.tsx, Rotator.tsx, QuickChips.tsx, HelpsList.tsx, ReviewMarquee.tsx (client)
 ├── lib/
 │   ├── site.ts               ← business details + consultHref()
 │   ├── services.ts           ← typed content for the 6 care pages
-│   └── types.ts              ← Service / Feature types
+│   ├── reviews.ts            ← all homecare.co.uk reviews (feeds /reviews and the home marquee)
+│   └── types.ts              ← Service / Feature / Review types
 ├── public/assets/            ← images (WebP 800/1600), logos, rating badges, docs/*.docx
 ├── next.config.ts            ← trailingSlash, images.unoptimized, 301 redirects from old WordPress slugs
 ├── legacy-static/            ← previous plain-HTML + Python build version (reference only, not built)
@@ -60,6 +61,7 @@ task-health/
 - **Hydration notes:**
   - `<html>` has `suppressHydrationWarning`, because an inline script swaps `no-js`→`js` before React hydrates.
   - `CountUp` server-renders the final number, then animates from 0 when it scrolls into view.
+  - `PageEffects` adds `is-in` to `.reveal` elements outside React. A client component must never give a `.reveal` element a `className` that changes with state: React would overwrite the classes, drop `is-in` and hide the element. Use a `data-*` attribute instead (see `ReviewMarquee`'s `data-paused`).
 
 ## Integrations
 | Service | Where | Notes |

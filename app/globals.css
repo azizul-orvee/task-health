@@ -15,6 +15,7 @@
   --white:#fff;
   --line:#e6dfd3;
   --gold:#e8a33c;
+  --green:#1a9a5c;         /* review-marquee star tiles only (white star ≥3:1) */
 
   --serif:var(--font-fraunces),Georgia,"Times New Roman",serif;
   --sans:var(--font-jakarta),system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -253,11 +254,29 @@ body.menu-open{overflow:hidden}
 .feature blockquote{font-family:var(--serif);font-size:clamp(1.3rem,1rem + 1.6vw,2.4rem);line-height:1.25;color:var(--ink);font-weight:400;letter-spacing:-.01em}
 .feature figcaption{margin-top:1.2rem;color:var(--muted)}
 .feature figcaption strong{color:var(--ink)}
-.quotes{display:grid;gap:1rem;margin-top:1rem}
 .quote{border:1px solid var(--line);border-radius:var(--r-m);padding:1.4rem;display:flex;flex-direction:column;background:#fff}
 .quote p{flex:1;font-size:.98rem}
 .quote cite{font-style:normal;font-weight:700;color:var(--ink);margin-top:1rem;font-size:.9rem}
 .stars{color:var(--gold);letter-spacing:3px;margin-bottom:.6rem}
+/* Review marquee (home): full-bleed endless row; the list is doubled and the track slides by one copy */
+.marquee{--fade:clamp(16px,6vw,120px);margin-top:var(--space-m)}
+.marquee__viewport{overflow:hidden;padding-block:.25rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent)}
+.marquee__track{display:flex;width:max-content;animation:marquee calc(var(--n,7) * 10s) linear infinite}
+.marquee__list{display:flex;gap:1rem;padding-right:1rem;list-style:none}
+.marquee__item{display:flex;flex:none;width:min(78vw,300px)}
+.marquee__item .quote{width:100%;text-align:center}
+.marquee__item .quote p{font-size:.95rem}
+.rating{display:flex;justify-content:center;gap:3px;margin-bottom:.9rem}
+.rating__star{display:grid;place-items:center;width:22px;height:22px;border-radius:3px;background:var(--green)}
+.rating__star svg{width:15px;height:15px;fill:#fff;stroke:none}
+.marquee[data-paused] .marquee__track{animation-play-state:paused}
+@media (hover:hover){.marquee__viewport:hover .marquee__track{animation-play-state:paused}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee__toggle{display:flex;align-items:center;gap:.45rem;min-height:44px;margin:.5rem auto 0;padding:0 1rem;border:0;border-radius:999px;background:none;font:600 .85rem/1 var(--sans);color:var(--muted);cursor:pointer;transition:color var(--dur-base)}
+.marquee__toggle svg{width:16px;height:16px}
+.marquee__toggle path{fill:currentColor}
+@media (hover:hover){.marquee__toggle:hover{color:var(--ink)}}
+.no-js .marquee__toggle{display:none}
 
 /* Areas */
 .areas__in{display:grid;gap:var(--space-l);align-items:center}
@@ -563,7 +582,6 @@ main:has(> .cta-band:last-child) + .footer .footer__grid{padding-top:0}
   .bento{grid-template-columns:1fr 1fr}
   .tile--xl{grid-column:1/-1;min-height:380px}
   .bento .tile:last-child{grid-column:1/-1}
-  .quotes{grid-template-columns:1fr 1fr}
   .urgent .btn{width:auto}
   .footer__grid{grid-template-columns:1fr 1fr}
   .phero__actions .btn{flex:0 0 auto}
@@ -621,7 +639,8 @@ main:has(> .cta-band:last-child) + .footer .footer__grid{padding-top:0}
   .promise__head{position:sticky;top:calc(var(--header-h) + 32px);align-self:start}
   .feature{padding:var(--space-l) var(--space-l) var(--space-m);display:grid;grid-template-columns:1fr;max-width:none}
   .feature blockquote{max-width:28ch;font-size:var(--step-3)}
-  .quotes{grid-template-columns:repeat(4,1fr)}
+  .marquee__item{width:340px}
+  .marquee__list{gap:1.25rem;padding-right:1.25rem}
   .badges img{height:96px}
   .areas__in{grid-template-columns:1fr 1fr;gap:var(--space-xl)}
   .careers__in{grid-template-columns:1fr 1fr;gap:var(--space-xl)}
@@ -671,4 +690,9 @@ main:has(> .cta-band:last-child) + .footer .footer__grid{padding-top:0}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .js .reveal,.js .hero__title .line > span,.js .hero__kicker,.js .hero__lead,.js .quick{opacity:1;transform:none}
+  /* Review marquee: no movement, just a swipeable row */
+  .marquee__track{animation:none}
+  .marquee__viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-mask-image:none;mask-image:none;padding-inline:16px;scroll-padding-inline:16px}
+  .marquee__item{scroll-snap-align:start}
+  .marquee__list--clone,.marquee__toggle{display:none}
 }
