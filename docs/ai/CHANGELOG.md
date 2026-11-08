@@ -2,6 +2,15 @@
 
 All changes to this project, newest first. Every AI tool and human must add an entry here after each change.
 
+## 2026-11-08 — Duplicate review check; Valerie, Felsted kept
+**Type:** docs
+**Tool:** Claude Code
+**What changed:**
+- Decision recorded: the "beyond mere professionalism" review stays credited to Valerie, Felsted (the live site's attribution). Louise F, the homecare.co.uk name for the same review, stays out of `lib/reviews.ts`.
+- Removed the open question from `docs/ai/STATUS.md`. Corrected the previous entry, which wrongly said this review was also the dementia-care page quote: that page quotes Pamela H. The Valerie quote in `lib/services.ts` is on `end-of-life-care`, and it's a different passage of her letter.
+**Why:** The user doesn't want any duplicate review, and wants the original kept under its original name.
+**Notes / gotchas:** Audited every quote in `lib/reviews.ts`, `lib/services.ts`, `app/page.tsx`, `app/reviews/page.tsx` and `app/about/page.tsx`: 14 unique names in the list, no repeated sentences, and no review under two names, so no code changed. A review can still appear as a short excerpt on one page and in full on `/reviews`, by design. Pamela H and Pamela Harris are two different reviews.
+
 ## 2026-11-07 — Eight more homecare.co.uk reviews; reviews moved to one data list
 **Type:** content | refactor
 **Tool:** Claude Code
@@ -12,7 +21,7 @@ All changes to this project, newest first. Every AI tool and human must add an e
 - `homeReviews` (the marquee) is now built from the list: Pamela Harris and Valerie, Felsted (live-site quotes) first, then every review except Pamela H, who is already the feature quote above it. That's 15 cards. The loop is 150s at the same speed. Long reviews (Jen H, John F, H V) use ellipsis excerpts.
 **Why:** The user asked to add all the reviews they pasted.
 **Notes / gotchas:**
-- Skipped: S M (already listed) and Louise F (9 Apr 2024). Louise F's text is the same review as the "Valerie, Felsted" long read on `/reviews` and the dementia-care quote in `lib/services.ts`, which the live site credits to Valerie. Waiting on the user to choose which attribution to keep.
+- Skipped: S M (already listed) and Louise F (9 Apr 2024). Louise F's text is the same review as the "Valerie, Felsted" long read on `/reviews`, which the live site credits to Valerie. The user later chose to keep Valerie (see the 2026-11-08 entry).
 - To add a review, add one entry to `reviews` in `lib/reviews.ts`. It then appears on `/reviews` and in the home marquee.
 
 ## 2026-11-07 — Centred text on the review marquee cards
